@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article class="event-content">
+    <div class="container">
+        <h1 class="event-title">{{ .Title }}</h1>
+        
+        <div class="event-meta">
+            {{ if .Date }}
+            <span class="event-date">{{ .Date.Format "January 2, 2006" }}</span>
+            {{ end }}
+            {{ with .Params.location }}
+            <span class="event-location">📍 {{ . }}</span>
+            {{ end }}
+        </div>
+        
+        <div class="event-body">
+            {{ .Content }}
+        </div>
+        
+        <div class="back-link">
+            <a href="{{ "events/" | relURL }}">← Back to all Events</a>
+        </div>
+    </div>
+</article>
+{{ end }}

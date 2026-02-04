@@ -1,0 +1,29 @@
+{{ define "main" }}
+<article class="page-content">
+    <div class="container">
+        <h1 class="page-title">Members</h1>
+        
+        <div class="members-grid">
+        {{ $members := .Pages }}
+        {{ if $members }}
+            {{ range $members }}
+            <div class="member-card">
+                <h3>{{ .Params.name }}</h3>
+                {{ with .Params.role }}
+                <div class="role">{{ . }}</div>
+                {{ end }}
+                {{ with .Params.year }}
+                <div class="year">{{ . }}</div>
+                {{ end }}
+                {{ with .Params.interests }}
+                <p class="interests">{{ . }}</p>
+                {{ end }}
+            </div>
+            {{ end }}
+        {{ else }}
+            <p>Member information coming soon!</p>
+        {{ end }}
+        </div>
+    </div>
+</article>
+{{ end }}

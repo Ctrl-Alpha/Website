@@ -1,0 +1,33 @@
+{{ define "main" }}
+<article class="mom-content">
+    <div class="container">
+        <h1 class="mom-title">{{ .Title }}</h1>
+        
+        <div class="mom-meta">
+            <span class="mom-date">{{ .Date.Format "January 2, 2006" }}</span>
+            {{ with .Params.attendees }}
+            <span class="mom-attendees">Attendees: {{ delimit . ", " }}</span>
+            {{ end }}
+        </div>
+        
+        <div class="mom-body">
+            {{ .Content }}
+        </div>
+        
+        {{ with .Params.action_items }}
+        <div class="action-items">
+            <h2>Action Items</h2>
+            <ul>
+            {{ range . }}
+                <li>{{ . }}</li>
+            {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+        
+        <div class="back-link">
+            <a href="{{ "moms/" | relURL }}">← Back to all MoMs</a>
+        </div>
+    </div>
+</article>
+{{ end }}

@@ -1,0 +1,44 @@
+{{ define "main" }}
+<article class="page-content">
+    <div class="container">
+        <h1 class="page-title">Minutes of Meetings</h1>
+        
+        <div class="moms-list">
+        {{ $moms := .Pages.ByDate.Reverse }}
+        {{ if $moms }}
+            {{ range $moms }}
+            <div class="mom-item">
+                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                <div class="mom-meta">
+                    <span class="mom-date">{{ .Date.Format "January 2, 2006" }}</span>
+                    {{ with .Params.attendees }}
+                    <span class="mom-attendees">👥 {{ len . }} attendees</span>
+                    {{ end }}
+                </div>
+                {{ if .Summary }}
+                <p>{{ .Summary | truncate 200 }}</p>
+                {{ end }}
+            </div>
+            {{ end }}
+        {{ else }}
+            <p>No meeting minutes available yet. Check back after our first meeting!</p>
+        {{ end }}
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="info-box">
+            <h2>How to Add a New MoM</h2>
+            <ol>
+                <li>Create a new file in the <code>content/moms</code> directory</li>
+                <li>Name it: <code>YYYY-MM-DD-meeting-title.md</code></li>
+                <li>Copy the template from <code>archetypes/moms.md</code></li>
+                <li>Fill in the front matter with meeting details</li>
+                <li>Write the meeting content in Markdown</li>
+                <li>Commit and push - it will appear automatically!</li>
+            </ol>
+            <p><strong>Template available in the <code>archetypes/moms.md</code> for easy copying.</strong></p>
+        </div>
+    </div>
+</article>
+{{ end }}

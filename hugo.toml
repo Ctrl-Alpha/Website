@@ -1,0 +1,39 @@
+baseURL = "https://ctrl-alpha.github.io/"
+languageCode = "en-us"
+title = "Ctrl Alpha"
+
+[params]
+  description = "Quantitative Finance Club at IIIT Hyderabad"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Events"
+    url = "/events/"
+    weight = 2
+  [[menu.main]]
+    name = "Members"
+    url = "/members/"
+    weight = 3
+  [[menu.main]]
+    name = "MoMs"
+    url = "/moms/"
+    weight = 4
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]
+
+# Content sections
+[permalinks]
+  moms = "/moms/:year/:month/:slug/"
+  events = "/events/:slug/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
