@@ -1,0 +1,40 @@
+---
+layout: page
+title: Minutes of Meetings
+---
+
+<div class="moms-list">
+{% assign sorted_moms = site.moms | sort: 'date' | reverse %}
+{% if sorted_moms.size > 0 %}
+    {% for mom in sorted_moms %}
+    <div class="mom-item">
+        <h2><a href="{{ mom.url | relative_url }}">{{ mom.title }}</a></h2>
+        <div class="mom-meta">
+            <span class="mom-date">{{ mom.date | date: "%B %d, %Y" }}</span>
+            {% if mom.attendees %}
+            <span class="mom-attendees">👥 {{ mom.attendees | size }} attendees</span>
+            {% endif %}
+        </div>
+        {% if mom.excerpt %}
+        <p>{{ mom.excerpt }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No meeting minutes available yet. Check back after our first meeting!</p>
+{% endif %}
+</div>
+
+<hr style="margin: 3rem 0; border: 1px solid #e0e0e0;">
+
+<div style="padding: 2rem; background: #fafafa; border-left: 4px solid #ff6b35;">
+    <h2>How to Add a New MoM</h2>
+    <ol style="margin-left: 2rem; line-height: 2;">
+        <li>Create a new file in the <code>_moms</code> directory</li>
+        <li>Name it: <code>YYYY-MM-DD-meeting-title.md</code></li>
+        <li>Add the front matter with meeting details</li>
+        <li>Write the meeting content in Markdown</li>
+        <li>Commit and push - it will appear automatically!</li>
+    </ol>
+    <p style="margin-top: 1rem;"><strong>Template available in the repository for easy copying.</strong></p>
+</div>

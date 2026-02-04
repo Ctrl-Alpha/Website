@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<article class="event-content">
+    <div class="container">
+        <h1 class="event-title">{{ page.title }}</h1>
+        
+        <div class="event-meta">
+            {% if page.date %}
+            <span class="event-date">{{ page.date | date: "%B %d, %Y" }}</span>
+            {% endif %}
+            {% if page.location %}
+            <span class="event-location">{{ page.location }}</span>
+            {% endif %}
+        </div>
+        
+        <div class="event-body">
+            {{ content }}
+        </div>
+    </div>
+</article>
