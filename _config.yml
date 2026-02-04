@@ -1,0 +1,40 @@
+# Site settings
+title: Ctrl Alpha
+description: Quantitative Finance Club at IIITH
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Collections for modular content
+collections:
+  events:
+    output: true
+    permalink: /events/:title/
+  members:
+    output: false
+  moms:
+    output: true
+    permalink: /moms/:year/:month/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "events"
+    values:
+      layout: "event"
+  - scope:
+      path: ""
+      type: "moms"
+    values:
+      layout: "mom"
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - _moms/TEMPLATE.md

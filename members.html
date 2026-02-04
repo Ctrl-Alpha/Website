@@ -1,0 +1,25 @@
+---
+layout: page
+title: Members
+---
+
+<div class="members-grid">
+{% if site.members.size > 0 %}
+    {% for member in site.members %}
+    <div class="member-card">
+        <h3>{{ member.name }}</h3>
+        {% if member.role %}
+        <div class="role">{{ member.role }}</div>
+        {% endif %}
+        {% if member.year %}
+        <div class="year">{{ member.year }}</div>
+        {% endif %}
+        {% if member.interests %}
+        <p>{{ member.interests }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% else %}
+    <p>Member information coming soon!</p>
+{% endif %}
+</div>
