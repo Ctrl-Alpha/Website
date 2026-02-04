@@ -1,0 +1,25 @@
+<header class="site-header">
+    <div class="container">
+        <div class="header-content">
+            <div class="site-title">
+                <a href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+            </div>
+            <nav class="site-nav">
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL | relURL }}" {{ if eq $.RelPermalink .URL }}class="active"{{ end }}>{{ .Name }}</a>
+                {{ end }}
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+    document.querySelector('.site-nav').classList.toggle('open');
+    this.classList.toggle('open');
+});
+</script>

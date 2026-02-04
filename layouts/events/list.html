@@ -1,0 +1,31 @@
+{{ define "main" }}
+<article class="page-content">
+    <div class="container">
+        <h1 class="page-title">Events</h1>
+        
+        <div class="events-list">
+        {{ $events := .Pages.ByDate.Reverse }}
+        {{ if $events }}
+            {{ range $events }}
+            <div class="event-item">
+                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                <div class="event-meta">
+                    {{ if .Date }}
+                    <span class="event-date">{{ .Date.Format "January 2, 2006" }}</span>
+                    {{ end }}
+                    {{ with .Params.location }}
+                    <span class="event-location">📍 {{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ if .Summary }}
+                <p>{{ .Summary | truncate 200 }}</p>
+                {{ end }}
+            </div>
+            {{ end }}
+        {{ else }}
+            <p>No events scheduled yet. Check back soon!</p>
+        {{ end }}
+        </div>
+    </div>
+</article>
+{{ end }}
